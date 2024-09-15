@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class FactoryExample : MonoBehaviour
 {
-    [SerializeField] private EnemyArchetype EnemyArchetype;
+    [SerializeField] private EnemyArchetype[] EnemiesArchetypes;
     [SerializeField] private Transform SpawnPoint;
     [SerializeField] private float IntervalSeconds = 1;
 
     private EnemyFactory _enemyFactory;
     private bool _keepSpawning;
+    private int _currentArchetypeIndex;
 
     private void Awake()
     {
@@ -30,8 +31,9 @@ public class FactoryExample : MonoBehaviour
 
         while (_keepSpawning)
         {
-            _enemyFactory.Create(EnemyArchetype, SpawnPoint);
-
+            _enemyFactory.Create(EnemiesArchetypes[_currentArchetypeIndex], SpawnPoint);
+            _currentArchetypeIndex = (_currentArchetypeIndex + 1) % EnemiesArchetypes.Length;
+            
             await Awaitable.WaitForSecondsAsync(IntervalSeconds);
         }
     }

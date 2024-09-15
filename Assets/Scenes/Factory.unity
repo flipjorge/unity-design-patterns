@@ -195,9 +195,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa1c96ea087eefd45898e6ead74f4324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyArchetype: {fileID: 11400000, guid: 9728d23e77dd5b44a944a9493c230001, type: 2}
-  IntervalSeconds: 1
+  EnemiesArchetypes:
+  - {fileID: 11400000, guid: 9728d23e77dd5b44a944a9493c230001, type: 2}
+  - {fileID: 11400000, guid: f84e5c605b3e88347863b92325afcc7c, type: 2}
   SpawnPoint: {fileID: 76570033}
+  IntervalSeconds: 1
 --- !u!1 &400662549
 GameObject:
   m_ObjectHideFlags: 0
