@@ -5,7 +5,8 @@ public class RotatingTurretGun : MonoBehaviour
 {
     [SerializeField] private Transform SpawnPointLeft;
     [SerializeField] private Transform SpawnPointRight;
-    [SerializeField] private ProjectileArchetype ProjectileArchetype;
+    [SerializeField] private ProjectileArchetype LeftProjectileArchetype;
+    [SerializeField] private ProjectileArchetype RightProjectileArchetype;
     [SerializeField] private float RotatingSpeed = 0;
     [SerializeField] private float FireRate = .1f;
 
@@ -48,7 +49,7 @@ public class RotatingTurretGun : MonoBehaviour
 
     private void Fire()
     {
-        _bulletFactory.Create(ProjectileArchetype, SpawnPointLeft);
-        _bulletFactory.Create(ProjectileArchetype, SpawnPointRight);
+        _bulletFactory.Create(LeftProjectileArchetype, SpawnPointLeft);
+        _bulletFactory.Create(RightProjectileArchetype, SpawnPointRight);
     }
 }
