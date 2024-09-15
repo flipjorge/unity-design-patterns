@@ -5,7 +5,7 @@ public class CapsuleEnemy : MonoBehaviour, IEnemy, IKillable
     [SerializeField] private CharacterController CharacterController;
 
     private const float Gravity = -9.8f;
-    
+
     private float _speed;
     private float _currentGravitySpeed;
 
@@ -16,13 +16,13 @@ public class CapsuleEnemy : MonoBehaviour, IEnemy, IKillable
 
     private void Update()
     {
-        Vector3 moveDirection = transform.forward * (_speed * Time.deltaTime);
-        
+        var moveDirection = transform.forward * (_speed * Time.deltaTime);
+
         if (CharacterController.isGrounded) _currentGravitySpeed = -1f;
         else _currentGravitySpeed += Gravity * Time.deltaTime;
-        
+
         moveDirection.y = _currentGravitySpeed * Time.deltaTime;
-        
+
         CharacterController.Move(moveDirection);
     }
 

@@ -1,15 +1,14 @@
-using System;
 using UnityEngine;
 
 public class FactoryExample : MonoBehaviour
 {
     [SerializeField] private EnemyArchetype EnemyArchetype;
-    [SerializeField] private float IntervalSeconds = 1;
     [SerializeField] private Transform SpawnPoint;
-    
+    [SerializeField] private float IntervalSeconds = 1;
+
     private EnemyFactory _enemyFactory;
     private bool _keepSpawning;
-    
+
     private void Awake()
     {
         _enemyFactory = new EnemyFactory();
@@ -17,7 +16,7 @@ public class FactoryExample : MonoBehaviour
 
     private void Start()
     {
-        StartSpawning();
+        _ = StartSpawning();
     }
 
     private void OnDestroy()
@@ -28,7 +27,7 @@ public class FactoryExample : MonoBehaviour
     private async Awaitable StartSpawning()
     {
         _keepSpawning = true;
-        
+
         while (_keepSpawning)
         {
             _enemyFactory.Create(EnemyArchetype, SpawnPoint);
