@@ -6,7 +6,7 @@ public class EnemyFactory
     {
         var instance = Object.Instantiate(archetype.Prefab, spawnPoint.position, spawnPoint.rotation);
         var enemy = instance.GetComponent<IEnemy>();
-        enemy?.Initialize(archetype.Speed);
+        enemy?.Initialize(archetype);
 
         return enemy;
     }

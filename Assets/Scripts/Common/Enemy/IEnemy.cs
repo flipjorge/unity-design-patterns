@@ -1,4 +1,4 @@
 public interface IEnemy
 {
-    void Initialize(float speed);
+    void Initialize(EnemyArchetype archetype);
 }

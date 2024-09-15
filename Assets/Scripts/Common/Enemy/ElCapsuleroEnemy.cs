@@ -9,9 +9,9 @@ public class CapsuleEnemy : MonoBehaviour, IEnemy, IKillable
     private float _speed;
     private float _currentGravitySpeed;
 
-    public void Initialize(float speed)
+    public void Initialize(EnemyArchetype archetype)
     {
-        _speed = speed;
+        _speed = archetype.Speed;
     }
 
     private void Update()

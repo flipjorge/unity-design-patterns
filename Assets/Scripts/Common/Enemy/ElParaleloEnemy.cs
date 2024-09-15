@@ -1,4 +1,3 @@
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class ElParaleloEnemy : MonoBehaviour, IEnemy, IKillable
@@ -11,9 +10,9 @@ public class ElParaleloEnemy : MonoBehaviour, IEnemy, IKillable
     private float _currentGravitySpeed;
     private float _initialTime;
 
-    public void Initialize(float speed)
+    public void Initialize(EnemyArchetype archetype)
     {
-        _speed = speed;
+        _speed = archetype.Speed;
         _initialTime = Time.time;
     }
 
@@ -21,7 +20,7 @@ public class ElParaleloEnemy : MonoBehaviour, IEnemy, IKillable
     {
         var moveDirection = transform.forward * (_speed * Time.deltaTime);
         moveDirection += transform.right * (Mathf.Sin((Time.time - _initialTime) * 3 + 1.5f) * 3f * Time.deltaTime);
-        
+
         if (CharacterController.isGrounded) _currentGravitySpeed = -1f;
         else _currentGravitySpeed += Gravity * Time.deltaTime;
 
