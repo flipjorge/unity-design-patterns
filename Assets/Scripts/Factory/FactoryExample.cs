@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using UnityEngine;
 
 public class FactoryExample : MonoBehaviour
@@ -31,7 +32,14 @@ public class FactoryExample : MonoBehaviour
 
         while (_keepSpawning)
         {
-            _characterFactory.Create(EnemiesArchetypes[_currentArchetypeIndex], SpawnPoint);
+            var character = _characterFactory.Create(EnemiesArchetypes[_currentArchetypeIndex], SpawnPoint) as MonoBehaviour;
+            
+            if (character != null)
+            {
+                var controller = character.gameObject.AddComponent<JustMoveForwardCharacterController>();
+                controller.Initialize(character as Character);
+            }
+            
             _currentArchetypeIndex = (_currentArchetypeIndex + 1) % EnemiesArchetypes.Length;
             
             await Awaitable.WaitForSecondsAsync(IntervalSeconds);

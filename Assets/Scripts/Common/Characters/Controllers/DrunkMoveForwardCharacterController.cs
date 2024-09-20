@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class DrunkMoveForwardCharacterController : MonoBehaviour
 {
-    [SerializeField] private Character Character;
+    private Character _character;
 
     private float _initialTime;
 
+    public void Initialize(Character character)
+    {
+        _character = character;
+    }
+    
     private void Awake()
     {
         _initialTime = Time.time;
@@ -16,11 +21,11 @@ public class DrunkMoveForwardCharacterController : MonoBehaviour
         var direction = transform.forward;
         direction += transform.right * (Mathf.Sin((Time.time - _initialTime) + 1.5f));
 
-        Character.Move(direction.normalized);
+        _character.Move(direction.normalized);
     }
 
     private void OnValidate()
     {
-        Character ??= GetComponent<Character>();
+        _character ??= GetComponent<Character>();
     }
 }

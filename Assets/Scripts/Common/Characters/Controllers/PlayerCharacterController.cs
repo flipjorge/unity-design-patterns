@@ -3,23 +3,22 @@ using UnityEngine.InputSystem;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-    [SerializeField] private Character Character;
-
+    private ICharacter _character;
     private InputAction _moveAction;
 
-    private void Awake()
+    public void Initialize(ICharacter character, InputAction moveAction)
     {
-        _moveAction = InputSystem.actions.FindAction("Player/Move");
+        _character = character;
+        _moveAction = moveAction;
     }
 
-    private void Update()
+    public void Update()
     {
-        if (_moveAction.IsPressed())
-        {
-            var inputDirection = _moveAction.ReadValue<Vector2>();
-            var moveDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
+        if (!_moveAction.IsPressed()) return;
 
-            Character.Move(moveDirection);
-        }
+        var inputDirection = _moveAction.ReadValue<Vector2>();
+        var moveDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
+
+        _character.Move(moveDirection);
     }
 }
