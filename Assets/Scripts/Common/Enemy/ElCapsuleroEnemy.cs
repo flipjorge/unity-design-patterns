@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CapsuleEnemy : MonoBehaviour, IEnemy, IKillable
+public class ElCapsuleroEnemy : MonoBehaviour, IEnemy, IKillable
 {
     [SerializeField] private CharacterController CharacterController;
 
