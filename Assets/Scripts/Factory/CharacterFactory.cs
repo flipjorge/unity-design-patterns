@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyFactory
+public class CharacterFactory
 {
     public ICharacter Create(CharacterArchetype archetype, Transform spawnPoint)
     {

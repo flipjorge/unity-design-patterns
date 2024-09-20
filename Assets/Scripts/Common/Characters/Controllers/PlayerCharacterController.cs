@@ -4,13 +4,11 @@ using UnityEngine.InputSystem;
 public class PlayerCharacterController : MonoBehaviour
 {
     [SerializeField] private Character Character;
-    [SerializeField] private CharacterArchetype Archetype;
 
     private InputAction _moveAction;
 
     private void Awake()
     {
-        Character.Initialize(Archetype);
         _moveAction = InputSystem.actions.FindAction("Player/Move");
     }
 

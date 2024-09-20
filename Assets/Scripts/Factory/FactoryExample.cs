@@ -6,13 +6,13 @@ public class FactoryExample : MonoBehaviour
     [SerializeField] private Transform SpawnPoint;
     [SerializeField] private float IntervalSeconds = 1;
 
-    private EnemyFactory _enemyFactory;
+    private CharacterFactory _characterFactory;
     private bool _keepSpawning;
     private int _currentArchetypeIndex;
 
     private void Awake()
     {
-        _enemyFactory = new EnemyFactory();
+        _characterFactory = new CharacterFactory();
     }
 
     private void Start()
@@ -31,7 +31,7 @@ public class FactoryExample : MonoBehaviour
 
         while (_keepSpawning)
         {
-            _enemyFactory.Create(EnemiesArchetypes[_currentArchetypeIndex], SpawnPoint);
+            _characterFactory.Create(EnemiesArchetypes[_currentArchetypeIndex], SpawnPoint);
             _currentArchetypeIndex = (_currentArchetypeIndex + 1) % EnemiesArchetypes.Length;
             
             await Awaitable.WaitForSecondsAsync(IntervalSeconds);
