@@ -36,8 +36,16 @@ public class FactoryExample : MonoBehaviour
             
             if (character != null)
             {
-                var controller = character.gameObject.AddComponent<JustMoveForwardCharacterController>();
-                controller.Initialize(character as Character);
+                if (_currentArchetypeIndex == 0)
+                {
+                    var controller = character.gameObject.AddComponent<JustMoveForwardCharacterController>();
+                    controller.Initialize(character as Character);    
+                }
+                else
+                {
+                    var controller = character.gameObject.AddComponent<DrunkMoveForwardCharacterController>();
+                    controller.Initialize(character as Character);
+                }
             }
             
             _currentArchetypeIndex = (_currentArchetypeIndex + 1) % EnemiesArchetypes.Length;

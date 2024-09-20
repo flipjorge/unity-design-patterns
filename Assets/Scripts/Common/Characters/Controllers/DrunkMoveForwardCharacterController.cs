@@ -19,13 +19,8 @@ public class DrunkMoveForwardCharacterController : MonoBehaviour
     private void Update()
     {
         var direction = transform.forward;
-        direction += transform.right * (Mathf.Sin((Time.time - _initialTime) + 1.5f));
+        direction += transform.right * (Mathf.Sin((Time.time - _initialTime) * 3 + 1.5f) * 0.0015f);
 
         _character.Move(direction.normalized);
-    }
-
-    private void OnValidate()
-    {
-        _character ??= GetComponent<Character>();
     }
 }
