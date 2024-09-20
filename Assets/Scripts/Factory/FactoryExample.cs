@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class FactoryExample : MonoBehaviour
 {
-    [SerializeField] private EnemyArchetype[] EnemiesArchetypes;
+    [SerializeField] private CharacterArchetype[] EnemiesArchetypes;
     [SerializeField] private Transform SpawnPoint;
     [SerializeField] private float IntervalSeconds = 1;
 

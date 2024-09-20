@@ -206,6 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7939520622656805858}
   - component: {fileID: 8538948804483283738}
+  - component: {fileID: 6736074836271664127}
   - component: {fileID: 9123981696040148878}
   m_Layer: 0
   m_Name: ElCapsuleroVermejo
@@ -241,6 +242,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcfd982fa85cf4f47b9efcf85e14e89c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Character: {fileID: 6736074836271664127}
+--- !u!114 &6736074836271664127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8495477634114319128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0508328e751bf7e418d915fa1edc0e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterController: {fileID: 9123981696040148878}

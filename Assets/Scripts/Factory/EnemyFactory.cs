@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class EnemyFactory
 {
-    public IEnemy Create(EnemyArchetype archetype, Transform spawnPoint)
+    public ICharacter Create(CharacterArchetype archetype, Transform spawnPoint)
     {
         var instance = Object.Instantiate(archetype.Prefab, spawnPoint.position, spawnPoint.rotation);
-        var enemy = instance.GetComponent<IEnemy>();
+        var enemy = instance.GetComponent<ICharacter>();
         enemy?.Initialize(archetype);
 
         return enemy;
