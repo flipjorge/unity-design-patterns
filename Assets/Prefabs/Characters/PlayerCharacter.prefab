@@ -205,11 +205,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7939520622656805858}
-  - component: {fileID: 8538948804483283738}
+  - component: {fileID: 3716878975289145928}
   - component: {fileID: 6736074836271664127}
   - component: {fileID: 9123981696040148878}
   m_Layer: 0
-  m_Name: ElCapsuleroVermejo
+  m_Name: PlayerCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +232,7 @@ Transform:
   - {fileID: 6292885405682734892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8538948804483283738
+--- !u!114 &3716878975289145928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,10 +241,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8495477634114319128}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcfd982fa85cf4f47b9efcf85e14e89c, type: 3}
+  m_Script: {fileID: 11500000, guid: cc8dcdf013fddad45b4c4ff0b261fa2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 6736074836271664127}
+  Archetype: {fileID: 11400000, guid: 9728d23e77dd5b44a944a9493c230001, type: 2}
 --- !u!114 &6736074836271664127
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class Character : MonoBehaviour, ICharacter, IKillable
     {
         _speed = archetype.Speed;
     }
-    
+
     private void Update()
     {
         var movement = _direction * (_speed * Time.deltaTime);
@@ -25,7 +25,10 @@ public class Character : MonoBehaviour, ICharacter, IKillable
         movement.y = _currentGravitySpeed * Time.deltaTime;
 
         CharacterController.Move(movement);
-        
+
+        if (_direction.sqrMagnitude > 0)
+            transform.rotation = Quaternion.LookRotation(_direction);
+
         _direction = Vector3.zero;
     }
 
@@ -38,7 +41,7 @@ public class Character : MonoBehaviour, ICharacter, IKillable
     {
         Destroy(gameObject);
     }
-    
+
     private void OnValidate()
     {
         CharacterController ??= GetComponent<CharacterController>();

@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 7384785082317975284}
   - component: {fileID: 9123981696040148878}
   m_Layer: 0
-  m_Name: ElParaleloDelMar
+  m_Name: DrunkMoveForwardCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
