@@ -39,7 +39,7 @@ public class FactoryExample : MonoBehaviour
                 if (_currentArchetypeIndex == 0)
                 {
                     var controller = character.gameObject.AddComponent<JustMoveForwardCharacterController>();
-                    controller.Initialize(character as Character);    
+                    controller.Initialize(character as Character);
                 }
                 else
                 {
