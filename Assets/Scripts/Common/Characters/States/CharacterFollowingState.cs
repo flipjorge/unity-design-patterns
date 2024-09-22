@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class CharacterFollowingState : State<ICharacter>
+public class CharacterFollowingState : State<IStateMachineCharacter>
 {
     private readonly Transform _target;
     private readonly Action _onPlayerLost;
@@ -10,7 +10,7 @@ public class CharacterFollowingState : State<ICharacter>
     private const float MaxRadius = 8;
     private const float DistanceThreshold = 2;
 
-    public CharacterFollowingState(ICharacter owner, Transform target, Action onPlayerLost, Action onReachPlayer) : base(owner)
+    public CharacterFollowingState(IStateMachineCharacter owner, Transform target, Action onPlayerLost, Action onReachPlayer) : base(owner)
     {
         _target = target;
         _onPlayerLost = onPlayerLost;
@@ -24,7 +24,7 @@ public class CharacterFollowingState : State<ICharacter>
 
     public override void Update()
     {
-        var distance = Vector3.Distance(_target.position, Owner.CurrentPosition);
+        var distance = Vector3.Distance(_target.position, Owner.Transform.position);
 
         if (distance > MaxRadius)
         {
@@ -39,7 +39,7 @@ public class CharacterFollowingState : State<ICharacter>
             return;
         }
 
-        var direction = _target.position - Owner.CurrentPosition;
+        var direction = _target.position - Owner.Transform.position;
         direction = new Vector3(direction.x, 0, direction.z);
 
         Owner.Move(direction.normalized);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour, ICharacter, IKillable
+public class Character : MonoBehaviour, IStateMachineCharacter, IKillable
 {
     [SerializeField] private CharacterController CharacterController;
 
@@ -8,8 +8,7 @@ public class Character : MonoBehaviour, ICharacter, IKillable
     
     private float _currentGravitySpeed;
     private Vector3 _direction;
-
-    public Vector3 CurrentPosition => transform.position;
+    
     public Transform Transform => transform;
     public float Speed { get; private set; }
     public int Damage { get; private set; }

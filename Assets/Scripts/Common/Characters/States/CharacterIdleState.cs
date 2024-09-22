@@ -1,6 +1,6 @@
-public class CharacterIdleState : State<ICharacter>
+public class CharacterIdleState : State<IStateMachineCharacter>
 {
-    public CharacterIdleState(ICharacter owner) : base(owner)
+    public CharacterIdleState(IStateMachineCharacter owner) : base(owner)
     {
         //
     }

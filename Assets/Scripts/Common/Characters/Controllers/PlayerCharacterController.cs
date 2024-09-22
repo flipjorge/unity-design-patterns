@@ -3,10 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerCharacterController : MonoBehaviour
 {
-    private ICharacter _character;
+    private IStateMachineCharacter _character;
     private InputAction _moveAction;
 
-    public void Initialize(ICharacter character, InputAction moveAction)
+    public void Initialize(IStateMachineCharacter character, InputAction moveAction)
     {
         _character = character;
         _moveAction = moveAction;

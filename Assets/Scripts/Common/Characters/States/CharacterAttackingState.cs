@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class CharacterAttackingState : State<ICharacter>
+public class CharacterAttackingState : State<IStateMachineCharacter>
 {
-    private readonly ICharacter _targetCharacter;
+    private readonly IStateMachineCharacter _targetCharacter;
     private readonly Action _onFinishAttack;
     
-    public CharacterAttackingState(ICharacter owner, ICharacter targetCharacter, Action onFinishAttack) : base(owner)
+    public CharacterAttackingState(IStateMachineCharacter owner, IStateMachineCharacter targetCharacter, Action onFinishAttack) : base(owner)
     {
         _targetCharacter = targetCharacter;
         _onFinishAttack = onFinishAttack;

@@ -25,13 +25,13 @@ public class StateMachineExample : MonoBehaviour
         if (playerCharacter == null) return;
         
         _playerController = playerCharacter.gameObject.AddComponent<PlayerCharacterController>();
-        _playerController.Initialize(playerCharacter as ICharacter, MoveAction.action);
+        _playerController.Initialize(playerCharacter as IStateMachineCharacter, MoveAction.action);
 
         var enemyCharacter = _characterFactory.Create(EnemyArchetype, EnemySpawnPoint) as MonoBehaviour;
         if (enemyCharacter == null) return;
         
         _enemyController = enemyCharacter.gameObject.AddComponent<EnemyCharacterController>();
-        _enemyController.Initialize(enemyCharacter as ICharacter, playerCharacter as ICharacter);
+        _enemyController.Initialize(enemyCharacter as IStateMachineCharacter, playerCharacter as IStateMachineCharacter);
     }
 
     private void Update()

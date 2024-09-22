@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EnemyCharacterController : MonoBehaviour
 {
-    private StateMachine<ICharacter> _stateMachine;
-    private ICharacter _character;
-    private ICharacter _player;
+    private StateMachine<IStateMachineCharacter> _stateMachine;
+    private IStateMachineCharacter _character;
+    private IStateMachineCharacter _player;
 
-    public void Initialize(ICharacter character, ICharacter player)
+    public void Initialize(IStateMachineCharacter character, IStateMachineCharacter player)
     {
         _character = character;
         _player = player;
@@ -14,7 +14,7 @@ public class EnemyCharacterController : MonoBehaviour
 
     private void Awake()
     {
-        _stateMachine = new StateMachine<ICharacter>();
+        _stateMachine = new StateMachine<IStateMachineCharacter>();
     }
 
     private void Start()
@@ -29,11 +29,11 @@ public class EnemyCharacterController : MonoBehaviour
 
     private void StartWandering()
     {
-        var state = new CharacterWanderingState(_character, _player, StartFollwing);
+        var state = new CharacterWanderingState(_character, _player, StartFollowing);
         _stateMachine.ChangeTo(state);
     }
     
-    private void StartFollwing()
+    private void StartFollowing()
     {
         var state =
             new CharacterFollowingState(_character, _player.Transform, StartWandering, Attack);
@@ -42,7 +42,7 @@ public class EnemyCharacterController : MonoBehaviour
 
     private void Attack()
     {
-        var state = new CharacterAttackingState(_character, _player, StartFollwing);
+        var state = new CharacterAttackingState(_character, _player, StartFollowing);
         _stateMachine.ChangeTo(state);
     }
 }

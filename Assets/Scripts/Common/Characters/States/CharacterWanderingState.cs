@@ -3,9 +3,9 @@ using System.Threading;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class CharacterWanderingState : State<ICharacter>
+public class CharacterWanderingState : State<IStateMachineCharacter>
 {
-    private readonly ICharacter _player;
+    private readonly IStateMachineCharacter _player;
     private readonly Action _onPlayerDetected;
     private readonly CancellationTokenSource _cancellationToken;
 
@@ -17,7 +17,7 @@ public class CharacterWanderingState : State<ICharacter>
     private const float RestTime = 2f;
     private const float DetectingDistance = 5;
 
-    public CharacterWanderingState(ICharacter owner, ICharacter player, Action onPlayerDetected) : base(owner)
+    public CharacterWanderingState(IStateMachineCharacter owner, IStateMachineCharacter player, Action onPlayerDetected) : base(owner)
     {
         _player = player;
         _onPlayerDetected = onPlayerDetected;
@@ -32,7 +32,7 @@ public class CharacterWanderingState : State<ICharacter>
 
     public override void Update()
     {
-        var distanceToPlayer = Vector3.Distance(_player.CurrentPosition, Owner.CurrentPosition);
+        var distanceToPlayer = Vector3.Distance(_player.Transform.position, Owner.Transform.position);
         if (distanceToPlayer > DetectingDistance) return;
 
         _isWandering = false;
@@ -70,16 +70,16 @@ public class CharacterWanderingState : State<ICharacter>
     {
         try
         {
-            var distance = Vector3.Distance(_targetPosition, Owner.CurrentPosition);
+            var distance = Vector3.Distance(_targetPosition, Owner.Transform.position);
 
             while (distance > DistanceThreshold)
             {
-                var direction = _targetPosition - Owner.CurrentPosition;
+                var direction = _targetPosition - Owner.Transform.position;
                 direction = new Vector3(direction.x, 0, direction.z);
 
                 Owner.Move(direction.normalized);
 
-                distance = Vector3.Distance(_targetPosition, Owner.CurrentPosition);
+                distance = Vector3.Distance(_targetPosition, Owner.Transform.position);
                 await Awaitable.NextFrameAsync(_cancellationToken.Token);
             }
         }
@@ -94,6 +94,6 @@ public class CharacterWanderingState : State<ICharacter>
         var positionX = Random.Range(-MaxRadius, MaxRadius);
         var positionZ = Random.Range(-MaxRadius, MaxRadius);
 
-        return Owner.CurrentPosition + new Vector3(positionX, 0, positionZ);
+        return Owner.Transform.position + new Vector3(positionX, 0, positionZ);
     }
 }
