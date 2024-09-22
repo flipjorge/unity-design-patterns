@@ -21,17 +21,17 @@ public class StateMachineExample : MonoBehaviour
 
     private void Start()
     {
-        var playerCharacter = _characterFactory.Create(PlayerArchetype, PlayerSpawnPoint) as MonoBehaviour;
+        var playerCharacter = _characterFactory.Create(PlayerArchetype, PlayerSpawnPoint);
         if (playerCharacter == null) return;
         
         _playerController = playerCharacter.gameObject.AddComponent<PlayerCharacterController>();
-        _playerController.Initialize(playerCharacter as IStateMachineCharacter, MoveAction.action);
+        _playerController.Initialize(playerCharacter, MoveAction.action);
 
-        var enemyCharacter = _characterFactory.Create(EnemyArchetype, EnemySpawnPoint) as MonoBehaviour;
+        var enemyCharacter = _characterFactory.Create(EnemyArchetype, EnemySpawnPoint);
         if (enemyCharacter == null) return;
         
         _enemyController = enemyCharacter.gameObject.AddComponent<EnemyCharacterController>();
-        _enemyController.Initialize(enemyCharacter as IStateMachineCharacter, playerCharacter as IStateMachineCharacter);
+        _enemyController.Initialize(enemyCharacter, playerCharacter);
     }
 
     private void Update()

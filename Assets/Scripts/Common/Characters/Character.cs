@@ -41,6 +41,36 @@ public class Character : MonoBehaviour, IStateMachineCharacter, IKillable
         _direction = direction;
     }
 
+    public async Awaitable MoveTo(Vector3 position)
+    {
+        var direction = position - transform.position;
+        direction = new Vector3(direction.x, 0, direction.z).normalized;
+        var distance = Vector3.Distance(position, transform.position);
+        
+        while (distance > .2f)
+        {
+            Move(direction);
+            
+            distance = Vector3.Distance(position, transform.position);
+
+            await Awaitable.NextFrameAsync();
+        }
+    }
+
+    public async Awaitable Spin(int spins = 1)
+    {
+        float rotation = 0;
+        float targetRotation = 360 * spins;
+
+        while (rotation < targetRotation)
+        {
+            transform.Rotate(0, Speed, 0);
+            rotation += Speed;
+
+            await Awaitable.NextFrameAsync();
+        }
+    }
+
     public void ReceiveDamage(int damage)
     {
         Debug.Log($"Suffered damage: {damage}");

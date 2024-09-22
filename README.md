@@ -7,3 +7,4 @@ Current examples:
 - Factory
 - Object Pool
 - State Machine
+- Command
